@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
             ));
           },
           child: Container(
+            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 54),
             decoration: BoxDecoration(
               color: Colors.blue,
               borderRadius: BorderRadius.circular(24),
