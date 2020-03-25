@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:true_false/data/data.dart';
 import 'package:true_false/model/questionmodel.dart';
+import 'package:true_false/views/result.dart';
 
 class Quiz extends StatefulWidget {
   @override
@@ -26,9 +27,37 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin{
     _questions = getQuestion();
 
     animationController = AnimationController(
-      duration: const Duration(seconds: 15), vsync: this
-    );
+      duration: const Duration(seconds: 5), vsync: this
+    )..addListener(() {
+      setState(() {
+        
+      });
+    });
     animation = Tween(begin: beginAnim, end: endAnim).animate(animationController);
+    startAnim();
+
+    animationController.addStatusListener((AnimationStatus status){
+      if(status == AnimationStatus.completed){
+        setState(() {
+          if(index < _questions.length - 1){
+            index++;
+            resetAnim();
+            startAnim();
+          }else{
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Result()));
+          }
+        });
+      }
+    });
+  }
+  startAnim(){
+    animationController.forward();
+  }
+  resetAnim(){
+    animationController.reset();
+  }
+  stopAnim(){
+    animationController.stop();
   }
   @override
   Widget build(BuildContext context) {
@@ -90,39 +119,73 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin{
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: Container(
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(vertical: 12),
-                        child: Text('True',
-                          style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white
+                    child: GestureDetector(
+                      onTap: () {
+                          if(_questions[index].getAnswer() == "True"){
+                            setState(() {
+                              points = points + 20;
+                              index++;
+                              resetAnim();
+                              startAnim();
+                            });
+                          }else{
+                            points = points - 5;
+                            index++;
+                            resetAnim();
+                            startAnim();
+                          }
+                      },
+                      child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                          child: Text('True',
+                            style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24),
+                            color: Colors.blue
                           ),
                         ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24),
-                          color: Colors.blue
-                        ),
-                      )
+                    )
                     ),
                     SizedBox(width: 20,),
                     Expanded(
-                    child: Container(
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(vertical: 12),
-                        child: Text('False',
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white
+                    child: GestureDetector(
+                        onTap: () {
+                            if(_questions[index].getAnswer() == "False"){
+                              setState(() {
+                                points = points + 20;
+                                index++;
+                                resetAnim();
+                                startAnim();
+                              });
+                            }else{
+                              points = points - 5;
+                              index++;
+                              resetAnim();
+                              startAnim();
+                            }
+                        },
+                      child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                          child: Text('False',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white
+                          ),
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24),
+                            color: Colors.red
+                          ),
                         ),
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24),
-                          color: Colors.red
-                        ),
-                      )
+                    )
                     )
                 ],
               ),

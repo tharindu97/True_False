@@ -14,7 +14,7 @@ List<QuestionModel>  getQuestion(){
   //2
   questionModel.setQuestion('tharindu kavishna');
   questionModel.setAnswer('False');
-  questionModel.setImageUrl('https://images.pexels.com/photos/3779816/pexels-photo-3779816.jpeg?cs=srgb&dl=brown-and-gold-temple-under-white-clouds-3779816.jpg&fm=jpg');
+  questionModel.setImageUrl('https://images.pexels.com/photos/3861961/pexels-photo-3861961.jpeg?cs=srgb&dl=woman-in-black-tank-top-sitting-on-blue-sofa-chair-3861961.jpg&fm=jpg');
 
   questions.add(questionModel);
   questionModel = new QuestionModel();
@@ -30,7 +30,7 @@ List<QuestionModel>  getQuestion(){
   //4
   questionModel.setQuestion('tharindu kavishna');
   questionModel.setAnswer('False');
-  questionModel.setImageUrl('https://images.pexels.com/photos/3779816/pexels-photo-3779816.jpeg?cs=srgb&dl=brown-and-gold-temple-under-white-clouds-3779816.jpg&fm=jpg');
+  questionModel.setImageUrl('https://images.pexels.com/photos/3861961/pexels-photo-3861961.jpeg?cs=srgb&dl=woman-in-black-tank-top-sitting-on-blue-sofa-chair-3861961.jpg&fm=jpg');
 
   questions.add(questionModel);
   questionModel = new QuestionModel();
@@ -46,8 +46,7 @@ List<QuestionModel>  getQuestion(){
   //6
   questionModel.setQuestion('tharindu kavishna');
   questionModel.setAnswer('False');
-  questionModel.setImageUrl('https://images.pexels.com/photos/3779816/pexels-photo-3779816.jpeg?cs=srgb&dl=brown-and-gold-temple-under-white-clouds-3779816.jpg&fm=jpg');
-
+  questionModel.setImageUrl('https://images.pexels.com/photos/3861961/pexels-photo-3861961.jpeg?cs=srgb&dl=woman-in-black-tank-top-sitting-on-blue-sofa-chair-3861961.jpg&fm=jpg');
   questions.add(questionModel);
   questionModel = new QuestionModel();
 
@@ -62,8 +61,7 @@ List<QuestionModel>  getQuestion(){
   //8
   questionModel.setQuestion('tharindu kavishna');
   questionModel.setAnswer('False');
-  questionModel.setImageUrl('https://images.pexels.com/photos/3779816/pexels-photo-3779816.jpeg?cs=srgb&dl=brown-and-gold-temple-under-white-clouds-3779816.jpg&fm=jpg');
-
+  questionModel.setImageUrl('https://images.pexels.com/photos/3861961/pexels-photo-3861961.jpeg?cs=srgb&dl=woman-in-black-tank-top-sitting-on-blue-sofa-chair-3861961.jpg&fm=jpg');
   questions.add(questionModel);
   questionModel = new QuestionModel();
 
