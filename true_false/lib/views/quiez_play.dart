@@ -39,12 +39,20 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin{
     animationController.addStatusListener((AnimationStatus status){
       if(status == AnimationStatus.completed){
         setState(() {
-          if(index < _questions.length - 1){
+          if(index < (_questions.length-1)){
             index++;
             resetAnim();
             startAnim();
+            notAttempted++;
           }else{
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Result()));
+            notAttempted++;
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Result(
+              score: points,
+              totalQuestion: _questions.length,
+              correct: correct,
+              incorrect: incorrect,
+              notattempted: notAttempted,
+            )));
           }
         });
       }
@@ -125,12 +133,14 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin{
                             setState(() {
                               points = points + 20;
                               index++;
+                              correct++;
                               resetAnim();
                               startAnim();
                             });
                           }else{
                             points = points - 5;
                             index++;
+                            incorrect++;
                             resetAnim();
                             startAnim();
                           }
@@ -160,12 +170,14 @@ class _QuizState extends State<Quiz> with SingleTickerProviderStateMixin{
                               setState(() {
                                 points = points + 20;
                                 index++;
+                                correct++;
                                 resetAnim();
                                 startAnim();
                               });
                             }else{
                               points = points - 5;
                               index++;
+                              incorrect++;
                               resetAnim();
                               startAnim();
                             }
